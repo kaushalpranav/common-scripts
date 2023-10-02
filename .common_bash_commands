@@ -1,0 +1,90 @@
+ansi()          { echo -e "\e[${1}m${*:2}\e[0m"; }
+bold()          { ansi 1 "$@"; }
+italic()        { ansi 3 "$@"; }
+underline()     { ansi 4 "$@"; }
+strikethrough() { ansi 9 "$@"; }
+red()           { ansi 31 "$@"; }
+lightgreen()    { ansi 92 "$@"; }
+
+# open webstorm in the current folder
+# /Applications/WebStorm.app/Contents/MacOS/webstorm . > /dev/null 2>&1 &
+alias ws='f() { /Applications/WebStorm.app/Contents/MacOS/webstorm "$1" > /dev/null 2>&1 &;  unset -f f; }; f'
+
+# open intellij in the current folder
+# "/Applications/IntelliJ IDEA.app/Contents/MacOS/idea" . > /dev/null 2>&1 &
+alias idea='f() { "/Applications/IntelliJ IDEA.app/Contents/MacOS/idea" "$1" > /dev/null 2>&1 &; unset -f f; }; f'
+
+# kubectl as k
+alias k="kubectl"
+
+alias kaf="kubectl apply -f"
+alias kl="kubectl logs"
+
+alias kgp="kubectl get pods"
+alias kgrs="kubectl get replicasets"
+alias kgs="kubectl get services"
+alias kgd="kubectl get deployments"
+alias kgn="kubectl get nodes"
+alias kge="kubectl get events"
+alias kgns="kubectl get namespaces"
+alias kgsa="kubectl get serviceaccounts"
+alias kgcm="kubectl get configmap"
+alias kgsec="kubectl get secrets"
+
+alias kdp="kubectl describe pods"
+alias kdrs="kubectl describe replicasets"
+alias kds="kubectl describe services"
+alias kdd="kubectl describe deployments"
+alias kdn="kubectl describe nodes"
+alias kde="kubectl describe events"
+alias kdns="kubectl describe namespaces"
+alias kdsa="kubectl describe serviceaccounts"
+alias kdcm="kubectl describe configmap"
+alias kdsec="kubectl describe secrets"
+
+# terraform as tf
+alias tf="terraform"
+
+# git commands frequently used
+# intentionally did not include git restore and git reset to avoid mishaps
+alias gs="git status"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias gdcw="git diff --color-words"
+alias gdscw="git diff --staged --color-words"
+alias ga="git add"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gp="git push"
+alias gl="git log --oneline"
+alias gl2="git log --oneline -2"
+alias gl3="git log --oneline -3"
+alias gl5="git log --oneline -5"
+alias gcb="git branch --show-current"
+alias gb="git branch"
+alias gf="git fetch"
+alias gpl="git pull"
+alias gi="
+echo \"======\"
+echo \"$(lightgreen status)\"
+echo \"======\"
+gs
+echo \"==========\"
+echo \"$(lightgreen commit log)\"
+echo \"==========\"
+gl -2
+echo \"==============\"
+echo \"$(lightgreen current branch)\"
+echo \"==============\"
+gcb
+"
+
+SCC="
+Available aliases:
+1. gs / gd / gds / gdcw / gdscw / gl -10 / glN / gcb / gb / gi
+2. ga / gc / gcm \"msg\" / gf / gp / gpl
+3. ws / idea
+4. tf
+5. k / kaf / kl
+6. kgX / kdX
+"
