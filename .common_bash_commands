@@ -6,13 +6,22 @@ strikethrough() { ansi 9 "$@"; }
 red()           { ansi 31 "$@"; }
 lightgreen()    { ansi 92 "$@"; }
 
-# open webstorm in the current folder
-# /Applications/WebStorm.app/Contents/MacOS/webstorm . > /dev/null 2>&1 &
-alias ws='f() { /Applications/WebStorm.app/Contents/MacOS/webstorm "$1" > /dev/null 2>&1 &;  unset -f f; }; f'
+# open intellij in the folder specified
+function idea() {
+    "/Users/kaushalpranav/Library/Application Support/JetBrains/Toolbox/scripts/idea" $1
+}
 
-# open intellij in the current folder
-# "/Applications/IntelliJ IDEA.app/Contents/MacOS/idea" . > /dev/null 2>&1 &
-alias idea='f() { "/Applications/IntelliJ IDEA.app/Contents/MacOS/idea" "$1" > /dev/null 2>&1 &; unset -f f; }; f'
+# open webstorm in the folder specified
+function ws() {
+    "/Users/kaushalpranav/Library/Application Support/JetBrains/Toolbox/scripts/webstorm" $1
+}
+
+# docker as d
+alias dps="docker container ls"
+alias dis="docker image ls"
+function dexec() {
+  docker exec -it "$1" /bin/sh
+}
 
 # kubectl as k
 alias k="kubectl"
@@ -41,6 +50,10 @@ alias kdns="kubectl describe namespaces"
 alias kdsa="kubectl describe serviceaccounts"
 alias kdcm="kubectl describe configmap"
 alias kdsec="kubectl describe secrets"
+
+function kexec() {
+  kubectl exec -it "$1" -- /bin/sh
+}
 
 # terraform as tf
 alias tf="terraform"
