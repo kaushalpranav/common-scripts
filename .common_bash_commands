@@ -62,6 +62,7 @@ alias tf="terraform"
 # intentionally did not include git restore and git reset to avoid mishaps
 alias gs="git status"
 alias gd="git diff"
+alias gdc="git diff --color-words"
 alias gds="git diff --staged"
 alias gdcw="git diff --color-words"
 alias gdscw="git diff --staged --color-words"
