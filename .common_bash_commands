@@ -63,8 +63,10 @@ alias tf="terraform"
 alias gs="git status"
 alias gd="git diff"
 alias gdc="git diff --color-words"
+alias gdcw="git diff --color-words"
 alias gds="git diff --staged"
 alias gdsc="git diff --staged --color-words"
+alias gdscw="git diff --staged --color-words"
 alias ga="git add"
 alias gcm="git commit -m"
 alias gcan="git commit --amend --no-edit"
@@ -92,20 +94,20 @@ alias gcb="git branch --show-current"
 alias gb="git branch"
 alias gf="git fetch"
 alias gpl="git pull"
-alias gi="
-echo \"======\"
-echo \"$(lightgreen status)\"
-echo \"======\"
-gs
-echo \"==========\"
-echo \"$(lightgreen commit log)\"
-echo \"==========\"
-gl -2
-echo \"==============\"
-echo \"$(lightgreen current branch)\"
-echo \"==============\"
-gcb
-"
+function gi() {
+  echo '======'
+  echo $(lightgreen status)
+  echo '======'
+  gs
+  echo '=========='
+  echo $(lightgreen commit log)
+  echo '=========='
+  gl -2
+  echo '=============='
+  echo $(lightgreen current branch)
+  echo '=============='
+  gcb
+}
 
 SCC="
 Available aliases:
